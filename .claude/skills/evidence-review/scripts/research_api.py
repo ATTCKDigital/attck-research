@@ -10,16 +10,22 @@ Prints JSON to stdout.
   python3 research_api.py s2-search "QUERY" [--n 25]
   python3 research_api.py epmc "QUERY" [--n 25]          Europe PMC search (DOI:"…", EXT_ID:… AND SRC:MED syntax)
   python3 research_api.py epmc-cites DOI [--n 25]        Europe PMC citing papers (biomedical and psychology journals)
+  python3 research_api.py oc-cites DOI [TERM] [--n 50]   OpenCitations citing papers (any field, no key needed)
+  python3 research_api.py crossref-search "QUERY" [--n 25]   Crossref search (no key needed; abstracts when deposited)
   python3 research_api.py crossref DOI                   Crossref record (title, abstract when deposited)
   python3 research_api.py pubmed PMID                    PubMed abstract text
-Falls back from OpenAlex to Semantic Scholar to Europe PMC when a service refuses, and says which one answered.
+Falls back when a service refuses and says which one answered: cites goes OpenAlex, Semantic Scholar, OpenCitations,
+Europe PMC; search goes OpenAlex, Semantic Scholar, Crossref, Europe PMC. Without an OpenAlex key, list and search calls
+stop for the day once the free budget is spent (single-paper lookups stay free and keep working).
 """
 
 import json
 import sys
 import urllib.parse
 
-from common import env, get, get_json
+import re
+
+from common import budget_spent, env, get, get_json
 
 E = env()
 OA = "https://api.openalex.org"
@@ -40,9 +46,18 @@ def s2_headers():
     )
 
 
+# The keyless pool refuses often; move on to the next service rather than wait through a long backoff
+S2_RETRIES = 4 if E.get("SEMANTIC_SCHOLAR_API_KEY") else 2
+
+
 def oa_abstract(w):
     inv = w.get("abstract_inverted_index") or {}
     return " ".join(t for _, t in sorted((i, t) for t, ii in inv.items() for i in ii))
+
+
+def oa_lists():
+    """OpenAlex list and search calls cost budget; single-record lookups don't."""
+    return bool(E.get("OPENALEX_API_KEY")) or not budget_spent("api.openalex.org")
 
 
 def oa_slim(w):
@@ -63,6 +78,7 @@ def work(doi):
     code, j = get_json(
         f"{S2}/paper/DOI:{doi}?fields=title,year,abstract,externalIds,citationCount",
         s2_headers(),
+        retries=S2_RETRIES,
     )
     if j:
         return {
@@ -78,7 +94,7 @@ def work(doi):
 
 def cites(doi, term=None, n=50):
     code, w = get_json(f"{OA}/works/doi:{doi}?{oa_params()}")
-    if w:
+    if w and oa_lists():
         flt = f"cites:{w['id'].rsplit('/', 1)[1]}" + (
             f",title_and_abstract.search:{term}" if term else ""
         )
@@ -91,7 +107,12 @@ def cites(doi, term=None, n=50):
                 "cited": w.get("title"),
                 "results": [oa_slim(x) for x in j.get("results", [])],
             }
-    for fetch in (s2_cites, epmc_cites):
+    for fetch in (s2_cites, oc_cites, epmc_cites):
+        if fetch is oc_cites:
+            r = oc_cites(doi, term, n)
+            if r.get("results"):
+                return r
+            continue
         r = fetch(doi, n * 4 if term else n)
         if r.get("results") and term:
             t = term.lower()
@@ -105,6 +126,47 @@ def cites(doi, term=None, n=50):
         if r.get("results"):
             return r
     return r
+
+
+def oc_cites(doi, term=None, n=50):
+    """OpenCitations citing papers, newest first, with title and abstract from OpenAlex single-paper lookups (free).
+    Very large citation lists come back cut off mid-stream, so rows are read with a pattern instead of a JSON parser;
+    what arrives still includes the newest citers."""
+    code, body = get(
+        "https://api.opencitations.net/index/v2/citations/doi:" + doi.lower(),
+        timeout=120,
+    )
+    rows = re.findall(
+        r'"citing": "([^"]*)",\s*"cited": "[^"]*",\s*"creation": "([^"]*)"',
+        body.decode("utf-8", "ignore"),
+    )
+    rows = sorted(rows, key=lambda r: r[1], reverse=True)
+    out, t = [], (term or "").lower()
+    scan = rows[: max(n * 4, 120) if term else n]
+    for ids, created in scan:
+        oa = re.search(r"openalex:(W\d+)", ids)
+        d = re.search(r"doi:(\S+)", ids)
+        if not (oa or d):
+            continue
+        code, w = get_json(
+            f"{OA}/works/{oa.group(1)}?{oa_params()}"
+            if oa
+            else f"{OA}/works/doi:{d.group(1)}?{oa_params()}"
+        )
+        x = oa_slim(w) if w else {"doi": d and d.group(1), "year": created[:4]}
+        if t and t not in ((x.get("title") or "") + " " + x.get("abstract", "")).lower():
+            continue
+        out.append(x)
+        if len(out) >= n:
+            break
+    return {
+        "source": "opencitations",
+        "http": code,
+        "citing_total": len(rows),
+        "scanned_newest": len(scan),
+        **({"filter": term} if term else {}),
+        "results": out,
+    }
 
 
 def epmc_cites(doi, n=25):
@@ -150,19 +212,31 @@ def epmc_cites(doi, n=25):
 
 
 def search(q, n=25):
-    code, j = get_json(f"{OA}/works?{oa_params(search=q, per_page=n)}")
-    if j:
-        return {
-            "source": "openalex",
-            "results": [oa_slim(x) for x in j.get("results", [])],
-        }
+    if oa_lists():
+        code, j = get_json(f"{OA}/works?{oa_params(search=q, per_page=n)}")
+        if j:
+            return {
+                "source": "openalex",
+                "results": [oa_slim(x) for x in j.get("results", [])],
+            }
     return s2_search(q, n)
+
+
+def s2_paper(pid):
+    """Semantic Scholar record by its id or "DOI:…" (it sometimes has an abstract the other services lack)."""
+    code, j = get_json(
+        f"{S2}/paper/{urllib.parse.quote(pid, safe=':/')}?fields=title,year,abstract,externalIds",
+        s2_headers(),
+        retries=S2_RETRIES,
+    )
+    return {"source": "semanticscholar", "http": code, **(j or {})}
 
 
 def s2_cites(doi, n=100):
     code, j = get_json(
         f"{S2}/paper/DOI:{doi}/citations?fields=title,year,abstract,externalIds&limit={min(n, 1000)}",
         s2_headers(),
+        retries=S2_RETRIES,
     )
     rows = [c.get("citingPaper", {}) for c in (j or {}).get("data", [])]
     return {
@@ -184,6 +258,7 @@ def s2_search(q, n=25):
     code, j = get_json(
         f"{S2}/paper/search?{urllib.parse.urlencode({'query': q, 'limit': n, 'fields': 'title,year,abstract,externalIds'})}",
         s2_headers(),
+        retries=S2_RETRIES,
     )
     if j and j.get("data"):
         return {
@@ -198,7 +273,32 @@ def s2_search(q, n=25):
                 for p in j["data"]
             ],
         }
-    return epmc(q, n)
+    r = crossref_search(q, n)
+    return r if r.get("results") else epmc(q, n)
+
+
+def crossref_search(q, n=25):
+    code, j = get_json(
+        "https://api.crossref.org/works?"
+        + urllib.parse.urlencode(
+            {"query": q, "rows": n, "select": "DOI,title,abstract,issued,type"}
+        )
+    )
+    items = ((j or {}).get("message") or {}).get("items") or []
+    return {
+        "source": "crossref",
+        "http": code,
+        "results": [
+            {
+                "title": " ".join(m.get("title") or []),
+                "year": ((m.get("issued") or {}).get("date-parts") or [[None]])[0][0],
+                "doi": m.get("DOI"),
+                "type": m.get("type"),
+                "abstract": re.sub(r"<[^>]+>", "", m.get("abstract") or "")[:1500],
+            }
+            for m in items
+        ],
+    }
 
 
 def epmc(q, n=25):
@@ -265,6 +365,8 @@ def main(a):
         "s2-cites": lambda: s2_cites(rest[0], **kw),
         "s2-search": lambda: s2_search(rest[0], **kw),
         "epmc-cites": lambda: epmc_cites(rest[0], **kw),
+        "oc-cites": lambda: oc_cites(rest[0], rest[1] if len(rest) > 1 else None, **kw),
+        "crossref-search": lambda: crossref_search(rest[0], **kw),
         "epmc": lambda: epmc(rest[0], **kw),
         "crossref": lambda: crossref(rest[0]),
         "pubmed": lambda: pubmed(rest[0]),

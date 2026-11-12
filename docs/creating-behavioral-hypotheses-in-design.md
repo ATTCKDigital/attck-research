@@ -15,9 +15,13 @@ Each factual claim in the article was checked against the source it cites, then 
 
 ### Introduction
 
+**In digital product teams, decisions often hinge on a gut instinct or what analytics writer Avinash Kaushik calls the HiPPO, the Highest Paid Person's Opinion.**
+
 The term HiPPO comes from Avinash Kaushik (2006) and was later popularized in Kohavi's experimentation papers.
 
 - [Kaushik, Seven Steps to Creating a Data Driven Decision Making Culture (2006)](https://www.kaushik.net/avinash/seven-steps-to-creating-a-data-driven-decision-making-culture/): “HiPPO’s rule the world, they over rule your data, they impose their opinions on you and your company customers”
+
+**Launching a complete redesign all at once muddies the water. Unless the test is designed to separate the changes, you can't tell which tweak moved the needle.**
 
 Multivariable (factorial) experiments can estimate the effect of several simultaneous changes. A single bundled A/B test cannot.
 
@@ -25,10 +29,14 @@ Multivariable (factorial) experiments can estimate the effect of several simulta
 
 ### Building a Hypothesis Library
 
+**High cognitive load? Test splitting long forms into steps. Cognitive load theory, and a meta-analysis of segmented instruction, suggest smaller chunks are easier to process, though experiments on paged versus single-page forms show tradeoffs rather than a clear winner.**
+
 Cognitive load theory (Sweller 1988) comes from instructional design, where a 2019 meta-analysis confirms that segmenting helps. Survey experiments (Peytchev et al. 2006; Toepoel et al. 2009; Mavletova and Couper 2014) find tradeoffs between paged and single-page forms, and Baymard reports no inherent advantage for either checkout format.
 
 - [Rey et al., A Meta-analysis of the Segmenting Effect, Educational Psychology Review 31 (2019)](https://eric.ed.gov/?id=EJ1217373): “This meta-analysis contains 56 investigations including 88 pairwise comparisons and reveals a significant segmenting effect with small to medium effects for retention and transfer performance.”
 - [Toepoel, Das & van Soest, Design of Web Questionnaires: The Effects of the Number of Items per Screen, Field Methods 21(2) 2009](https://doi.org/10.1177/1525822x08330261): “nonresponse increases with the number of items appearing on a single screen.”
+
+**Low social proof? Add quotes from recent buyers or show how many people use the product, drawing on Cialdini's work on social proof.**
 
 Social proof effects vary by setting; a two-hotel replication of the towel-reuse study found descriptive-norm messages no better than a standard appeal (Bohner & Schluter 2014).
 
@@ -36,14 +44,19 @@ Social proof effects vary by setting; a two-hotel replication of the towel-reuse
 
 ### Clearer Choices on the Pricing Page
 
+**After a test that ran for more than five months, the variation produced a 93.7% increase in visits to the free trial page, at 96% statistical significance. VWO did not report how many of those visits became sign-ups.**
+
 The VWO case reports page visits rather than completed trials and gives no sample size.
 
 - [Wingify (VWO), Lyyti success story](https://wingify.com/success-stories/lyyti/): “increasing visits to the lead generation page by 93.71%, with a statistical significance of 96%.”
 
+**The likely lesson is about clarity. With features listed beside the prices, prospects could compare plans without leaving the page, and every button now asked for the same thing. Because the changes shipped together, the test can't say which one mattered most.**
+
 The Lyyti test bundled three changes, so the reasons given for the lift are the team's interpretation, not separate findings.
 
-
 ### Prioritizing Hypotheses with Evidence
+
+**ICE (Impact, Confidence, Ease) is a framework for prioritizing ideas, with Ease being the effort needed to build and test.**
 
 ICE was popularized by Sean Ellis (Hacking Growth, 2017). Scores are subjective, which is part of why the article's added evidence column is useful.
 
@@ -51,8 +64,11 @@ ICE was popularized by Sean Ellis (Hacking Growth, 2017). Scores are subjective,
 
 ### Case Study: The Endowed Progress Effect
 
+**The head start, worth nothing in real terms, raised completion from 19 percent to 34 percent, nearly double. The study suggests behavior depends not just on the effort required, but on how that effort is framed.**
+
 Nunes and Drèze (2006) handed out 300 loyalty cards and tracked redemptions for nine months; 34% versus 19% is a 1.8-fold difference, significant at p < .01. The authors report moderators (the reason given for the bonus stamps and the currency of progress), Koo and Fishbach (2010) find endowed progress matters most early in goal pursuit, and a 2020 study finds the related goal-gradient effect weakens under high power.
 
+- [Nunes & Dreze, The Endowed Progress Effect, JCR 32(4) 2006 (full text, Wayback copy of the author-hosted PDF)](https://web.archive.org/web/20260105212707/http://msbfile03.usc.edu/digitalmeasures/jnunes/intellcont/Endowed%20Progress%20Effect-1.pdf): “The redemption rate for those possessing a card requiring 10 purchases, yet endowed with two stamps, was 34% versus just 19% for those who possessed a card requiring a total of eight purchases.”
 - [Kivetz, Urminsky & Zheng, The Goal-Gradient Hypothesis Resurrected, JMR 2006](https://doi.org/10.1509/jmkr.43.1.39): “the illusion of progress toward the goal induces purchase acceleration (e.g., customers who receive a 12-stamp coffee card with 2 preexisting “bonus” stamps complete the 10 required purchases faster”
 
 ## What changed in the article

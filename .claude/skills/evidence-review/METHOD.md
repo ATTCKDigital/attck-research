@@ -14,12 +14,16 @@ Each article folder (`work/NN/`) holds `article.txt` (full text; bracketed numbe
   a quote field. A script re-fetches every URL afterwards and checks every quote; unconfirmed quotes are never used to
   decide a verdict.
 - Never invent studies, authors, numbers or quotes. If unsure, say "not verified".
+- Never put a personal email address or other personal data in a request to any service (some APIs ask for a contact
+  address; leave it out).
 - Rate strength: meta-analysis | replication | experiment | observational | expert/practitioner | anecdote.
 - Blocked publisher pages: use the same paper's record in OpenAlex, Crossref, Semantic Scholar, Europe PMC or PubMed,
   and say so.
 - "Contradicts" and "no evidence either way" are different findings.
 - Research databases: query them through `scripts/research_api.py`, which applies the API keys, throttles requests,
-  retries on refusals and shares one cache across all reviews. Log every query in `search_log`.
+  retries on refusals, falls back to keyless services (OpenCitations, Crossref, Europe PMC) and shares one cache across
+  all reviews. Log every query in `search_log` with the service that answered (the output's `source`); when a
+  citation-graph result says `scanned_newest`, record that only that many of the newest citing papers were checked.
 
 ## Pass 1 — claims (`claims.json`)
 

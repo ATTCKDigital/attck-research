@@ -15,10 +15,14 @@ Each factual claim in the article was checked against the source it cites, then 
 
 ### The Myth of the "Reading" User
 
+**According to information foraging theory, users try to get the most useful information for the least time and effort. They weigh what a page seems to offer against the cost of digging for it.**
+
 Information foraging theory models people as maximizing the rate of valuable information gained (Pirolli and Card 1999). Lab work on skimming shows the trade-off: skimmers keep the main ideas and lose detail (Duggan and Payne 2009).
 
 - [Pernice, The Layer-Cake Pattern of Scanning Content on the Web, NN/g 2019](https://www.nngroup.com/articles/layer-cake-pattern-scanning/): “Recall that people are naturally efficient and attempt to put in the least possible work for achieving their goal”
 - [Duggan & Payne, Text skimming, J Exp Psychol Appl 15(3), 2009](https://pubmed.ncbi.nlm.nih.gov/19751073/): “skimming improved memory for important ideas from a text but did not improve memory of less important details or of inferences made from information within the text.”
+
+**Usability research backs this up. In a small 1997 Nielsen Norman Group study, 15 of 19 participants (79 percent) always scanned any new page they came across, and only 3 read word by word. NN/g's later eye-tracking studies found the same habit: people scan far more often than they read.**
 
 The percentages come from a 1997 think-aloud study with 19 participants (Morkes and Nielsen 1997). NN/g's later eyetracking work over 13 years confirmed that scanning dominates (Moran 2020), as do an eye-tracking study of skimming (Strukelj and Niehorster 2018) and a survey of screen-based reading (Liu 2005); motivated users sometimes read nearly everything (Pernice 2017).
 
@@ -29,11 +33,15 @@ The percentages come from a 1997 think-aloud study with 19 participants (Morkes 
 
 ### The Physiology of Digital Vision
 
+**The eye moves in rapid ballistic jumps called saccades; during a saccade the eye is effectively blind, and visual processing only happens during fixations.**
+
 Rayner notes that new visual information is not taken in during saccades, though cognitive processing continues.
 
 - [Rayner, Eye movements and attention in reading, scene perception, and visual search (Bartlett Lecture), QJEP 2009](https://pages.ucsd.edu/~bkbergen/cogs200/Rayner-Bartlett.pdf): “Since vision is suppressed during a saccade (Matin, 1974), new information is only acquired during fixations.”
 
 ### 1. The F-Pattern
+
+**On dense pages with little formatting, such as long articles or blog posts, users often follow an F-shaped pattern.**
 
 NN/g notes that good formatting can prevent F-shaped scanning (Pernice 2017).
 
@@ -41,12 +49,16 @@ NN/g notes that good formatting can prevent F-shaped scanning (Pernice 2017).
 
 ### Utilize Directional Cues
 
+**People reliably follow the gaze of others. You can use this gaze cueing to direct attention. If a subject in a photo looks at a button, the user's attention tends to follow. If the subject looks at the user, attention tends to stay on the face.**
+
 A meta-analysis of 423 gaze-cueing effects found the effect across tasks and cue types (McKay et al. 2021), and banner-ad experiments show averted gaze shifts attention to text and product (Sajjacholapunt and Ball 2014).
 
 - [McKay et al., Psychological Bulletin 147, 2021](https://pubmed.ncbi.nlm.nih.gov/35404635/): “A gaze-cueing effect emerged across all levels of the assessed task and cue features, indicating that others' eye gaze reliably directs observers' attention.”
 - [Sajjacholapunt & Ball, Frontiers in Psychology 5, 2014](https://pubmed.ncbi.nlm.nih.gov/24624104/): “in the condition involving faces with mutual gaze, the focus of attention was localized more on the face region rather than on the text or product”
 
 ### The "Squint Test" Audit Framework
+
+**For a data-driven alternative, teams can try predictive attention tools such as Attention Insight, keeping in mind that their accuracy figures come from the vendors. You can also apply a heavy blur in your design software as a rough stand-in for a first glance. If the primary action is hard to find in the blurred version, it probably does not stand out enough.**
 
 Blur keeps the low spatial frequencies that drive the first, coarse pass of recognition (Bar et al. 2006), so the squint test approximates a first glance and visual weight; peripheral vision mainly loses the ability to sort out cluttered detail rather than going blurry (Rosenholtz 2016). Perceptual-model tools can help designers compare designs (Rosenholtz, Dorai and Freeman 2011) and research models predict attention on web pages and other designs (Fosco et al. 2020), but no independent validation of Attention Insight's accuracy figures was found.
 
@@ -56,6 +68,8 @@ Blur keeps the low spatial frequencies that drive the first, coarse pass of reco
 - [Rosenholtz 2016 (PDF)](https://cshl-comp-neuro-vision.github.io/website/_static/pdfs/rosenholtz/rosenholtz-2016-annurev-vision.pdf): “Anstis (1998) applied Photoshop’s radial blur with parameters of spin = 1 and zoom = 4, producing an eccentricity-dependent blur”
 
 ### Case Study
+
+**Usability specialist James Breeze tracked the eyes of 106 people looking at two versions of an ad with a headline and a photo of a baby. When the baby faced the camera, heatmaps showed strong hotspots on the baby's face, and the headline and copy got much less attention.**
 
 Peer-reviewed eye-tracking studies of banner ads reproduced the effect: faces with direct gaze hold attention on the face (Sajjacholapunt and Ball 2014).
 

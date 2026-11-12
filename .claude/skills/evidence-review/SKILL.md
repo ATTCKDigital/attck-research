@@ -11,8 +11,11 @@ folder). Private working data goes to `work/` (gitignored); only addenda in `doc
 
 ## Setup check (once per session)
 
-- `.env` exists with `OPENALEX_API_KEY` and `SEMANTIC_SCHOLAR_API_KEY`. Without keys the reviews still run, but the
-  citation-graph route is often cut short by rate limits; say so in the reply if keys are missing. Never print keys.
+- `.env` may hold `OPENALEX_API_KEY` and `SEMANTIC_SCHOLAR_API_KEY`; never print them. Without keys the reviews still
+  run: `research_api.py` stops OpenAlex list and search calls once the free daily budget ($0.10 per IP, reset at
+  midnight UTC) is spent, slows keyless Semantic Scholar calls, and falls back to OpenCitations (citing papers, with
+  abstracts from free OpenAlex single-paper lookups), Crossref search and Europe PMC. Say in the reply which services
+  answered (`grep -ho '"source": "[a-z]*"'` over the pass3 search logs, or the agents' reports).
 - `python3 scripts/fetch_article.py list` works (read-only SSH access to WordPress).
 
 ## Running reviews ("review article 12", "articles 10-17")

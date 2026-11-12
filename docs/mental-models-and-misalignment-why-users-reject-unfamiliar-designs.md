@@ -15,10 +15,14 @@ Each factual claim in the article was checked against the source it cites, then 
 
 ### Introduction
 
+**In reality, no user arrives with an empty mind. They bring expectations learned on other websites, apps, and software.**
+
 A survey of 516 web users found shared, stable expectations about where many common web objects belong (Roth et al. 2010), though not for every object.
 
 - [Chan, Mental Models and User Experience Design (NN/g, 2024)](https://www.nngroup.com/articles/mental-models/): “Thus, a big part of customers' mental models of your site will be influenced by information gleaned from other sites.”
 - [Roth, Schmutz, Pauwels, Bargas-Avila & Opwis, Mental models for web objects, Interacting with Computers 22(2) (2010)](https://doi.org/10.1016/j.intcom.2009.10.004): “Users generally agree about the locations of many, but not all, web objects. These mental models are robust to demographic factors like gender and web expertise.”
+
+**However, when a design breaks these models, even for the sake of "innovation," it forces the user to stop and work out what to do. That extra effort slows people down, sours first impressions, and can lead some of them to give up.**
 
 Familiar designs do better on two measured fronts: inconsistent command syntax across applications cost users extra actions in a controlled study (Satzinger & Olfman 1998), and in a study of first impressions, websites that broke the usual layout were judged less attractive (Tuch et al. 2012). Whether broken expectations make people leave has not been measured directly, and consumer research shows that a moderate surprise can also make a product more appealing.
 
@@ -29,27 +33,35 @@ Familiar designs do better on two measured fronts: inconsistent command syntax a
 
 ### The Psychology of Expectation (Jakob's Law)
 
+**The governing principle of this behavior is Jakob's Law, coined by usability expert Jakob Nielsen. It starts from a plain observation: users spend most of their time on other sites.**
+
 Product-design research adds a nuance: people prefer new designs as long as the novelty does not cost typicality (Hekkert et al. 2003, the 'most advanced, yet acceptable' principle).
 
 - [Nielsen, End of Web Design (NN/g, 2000)](https://www.nngroup.com/articles/end-of-web-design/): “This means that users prefer your site to work the same way as all the other sites they already know.”
 
 ### Information Architecture (IA) Mismatches
 
+**A widely reported example came in 2014, when Marks & Spencer replaced its Amazon-run website with its own platform, which mixed shopping with magazine-style articles and videos.**
+
 The relaunch also moved M&S off an Amazon-run platform and forced every customer to re-register (Guardian; City A.M.).
 
 - [Wood, Shareholders attack Marks & Spencer as website revamp loses customers (The Guardian, 2014)](https://www.theguardian.com/business/2014/jul/08/marks-and-spencer-shareholders-attack-website-online-sales-fall): “M&S said online sales had fallen 8% in the past three months as customers were unable to navigate through the glossy-magazine-style articles and videos to make purchases.”
 
+**Online sales fell 8 percent in the following quarter. M&S blamed customers' difficulty navigating the magazine-style pages, though only about half of its online shoppers had re-registered on the new site.**
+
 The re-registration requirement (half of six million shoppers had not signed up again) is a second likely cause of the drop.
 
-
 ### Case Study: Snapchat's 2018 Redesign
+
+**The next quarter, daily active users fell 2 percent, from 191 million to 188 million, even as monthly users grew. Snap's CEO said the drop was primarily driven by "the disruption caused by our redesign."**
 
 By Q2 2019 daily users had recovered to 203 million with the friends/publishers split still in place (Snap Q2 2019 earnings release).
 
 - [Clover, MacRumors (2018)](https://www.macrumors.com/2018/08/07/snapchat-redesign-millions-of-lost-users/): “Snap said it had 188 million daily active Snapchat users during the second quarter of 2018, down from 191 million during the first quarter of the year.”
 
-A year later Snapchat had 203 million daily users, above its pre-redesign level, with friends and publishers still separated (Snap Q2 2019 earnings release).
+**Snap later rolled back some of the changes, restoring time order for chats and moving friends' Stories back, while keeping friends and publishers on separate screens.**
 
+A year later Snapchat had 203 million daily users, above its pre-redesign level, with friends and publishers still separated (Snap Q2 2019 earnings release).
 
 ## What changed in the article
 

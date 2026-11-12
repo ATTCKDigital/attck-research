@@ -15,16 +15,22 @@ Each factual claim in the article was checked against the source it cites, then 
 
 ### The Bandwidth Problem
 
+**Working memory is a finite resource, similar to a computer's RAM.**
+
 Cowan (2010) puts the limit at roughly three to five meaningful items; resource models (Ma, Husain & Bays 2014) describe it as a limited pool shared flexibly across items.
 
 - [Cowan, The Magical Mystery Four, Current Directions in Psychological Science, 2010](https://pmc.ncbi.nlm.nih.gov/articles/PMC2864034/): “There are severe limits in how much can be kept in mind at once (~3–5 items).”
 - [Baddeley, Working Memory, Science (1992), PubMed abstract](https://pubmed.ncbi.nlm.nih.gov/1736359/): “The term working memory refers to a brain system that provides temporary storage and manipulation of the information necessary for such complex cognitive tasks as language comprehension, learning, and reasoning.”
+
+**When a digital interface demands more processing power than the user has available, cognitive overload occurs. The result is slower, more error-prone work, and sometimes abandonment.**
 
 In shopper surveys, 17% of US shoppers say they abandoned an order because checkout was too long or complicated (Baymard); cost and trust reasons are more common.
 
 - [de Jong, Cognitive load theory, educational research, and instructional design: some food for thought, Instructional Science, 2010](https://eric.ed.gov/?id=EJ874567): “if a learning task requires too much capacity, learning will be hampered.”
 
 ### Cognitive Load Theory
+
+**Cognitive load researchers usually describe three types of load. Intrinsic Load is the inherent difficulty of the task itself (e.g., calculating a mortgage rate). It cannot be eliminated, only managed. Extraneous Load is the unnecessary difficulty added by poor design (e.g., a confusing font, a hidden navigation menu, or visual clutter). This is waste and should be eliminated. Germane Load is the effort spent actually processing and learning the information (e.g., understanding a pricing tier). The theory's authors now treat it less as a separate load than as the useful share of a person's limited capacity, and some researchers argue the first two types are all you need. For interface design, the practical split is the first two: keep the task's real difficulty, and remove the difficulty you added.**
 
 The three-type model comes from Sweller, van Merrienboer and Paas (1998), not the 1988 paper cited as. In their 2019 review the same authors describe germane load as redistributing working memory resources rather than adding to total load, and Kalyuga (2011) argues a two-type (intrinsic/extraneous) framework is sufficient. Questionnaire studies (Leppink et al. 2013; Klepsch et al. 2017) still recover three factors.
 
@@ -34,11 +40,15 @@ The three-type model comes from Sweller, van Merrienboer and Paas (1998), not th
 
 ### How This Behavior Shows Up
 
+**The split-attention effect occurs when users must hold information in mind while moving their eyes between physically separated sources (e.g., a map legend separated from the map), which burns working memory; integrating related information spatially and temporally makes the task easier.**
+
 Meta-analyses (Ginns 2006; Schroeder & Cenkci 2018, g = 0.63) support the effect, mainly for complex material and novices.
 
 - [Ginns, Integrating information: meta-analysis of spatial and temporal contiguity, Learning and Instruction, 2006](https://eric.ed.gov/?id=EJ747512): “for complex learning materials in particular, increasing either the spatial or temporal contiguity of related elements of information can lead to substantial learning gains.”
 - [Schroeder & Cenkci, Spatial contiguity and spatial split-attention effects, EPR, 2018](https://eric.ed.gov/?id=EJ1186641): “A random effects meta-analysis of 58 independent comparisons (n = 2426) produced an overall effect size of g = 0.63”
 - [Cited source (pass 2)](https://www.davidlewisphd.com/courses/EDD8121/readings/1992-ChandlerSweller-SplitAttention.pdf): “In a normal training environment, the integrated instructions group outperformed the conventional group.”
+
+**"Decision fatigue" is often used loosely, but the core idea has a research trail: in field studies, people who have already made many decisions tend to default, defer, or take the easier option more often. The effect varies by setting, lab tests of the underlying "depleted resource" idea have mostly failed to replicate, and some well-known findings have other explanations, so treat it as a tendency, not a law. The design lesson holds either way: do not ask users to make decisions they do not need to make.**
 
 For: Levav et al. (2010) randomized field experiments on car and suit configurators (more default acceptance after many choices); Persson et al. (2019), Allan et al. (2019), Hirshleifer et al. (2019) and a 2025 preregistered systematic review (Maier et al.: effects in 45% of tests). Against: ego-depletion multi-lab replications found d = 0.04 (Hagger et al. 2016) and d = 0.06 (Vohs et al. 2021), Dang et al. (2021) d = 0.10; Andersson et al. (2025) found no decision fatigue in triage nurses; Glockner (2016) and Weinshall-Margel and Shapard (2011) give non-fatigue explanations for the parole-judge result.
 
@@ -49,6 +59,8 @@ For: Levav et al. (2010) randomized field experiments on car and suit configurat
 - [Hirshleifer, Levi, Lourie & Teoh, Decision fatigue and heuristic analyst forecasts, Journal of Financial Economics 133 (2019)](https://doi.org/10.1016/j.jfineco.2019.01.005): “We find that forecast accuracy declines over the course of a day as the number of forecasts the analyst has already issued increases.”
 - [Maier, Powell, Murchie & Allan, Systematic review of the effects of decision fatigue in healthcare professionals on medical decision-making, Health Psychology Review 19 (2025)](https://pubmed.ncbi.nlm.nih.gov/40591577/): “45% of cases that quantitatively assessed the decision fatigue hypothesis provided evidence of significant decision fatigue effects across diagnostic, test ordering, prescribing, and therapeutic decisions.”
 
+**Edward Tufte's critique of "chartjunk" makes a related point in visual form. He called it decoration that "does not tell the viewer anything new": busy grid lines, excess tick marks, the debris of computer plotting. Tufte framed this as a matter of data and ink rather than cognitive load, and later studies found that some embellishment does not hurt comprehension and can even help recall. The rule, then, is to cut decoration that gets in the way, not all decoration.**
+
 The reading of chartjunk as a cost to the viewer is common in visualization research (Hullman et al. 2011 describe the rule as avoiding elements that 'slow comprehension'), and the seductive details meta-analysis (Rey 2012) supports the mechanism in learning materials. Experiments on charts are mixed: Gillan and Richman (1994) and Skau et al. (2015) found decoration costs, Bateman et al. (2010) and Haroz et al. (2015) found no cost and some recall benefit.
 
 - [Tufte, The Visual Display of Quantitative Information (1983), p. 107, as quoted in Few, The Chartjunk Debate (2011, PDF)](https://webspace.science.uu.nl/~telea001/uploads/VACourse/Few11.pdf): “The interior decoration of graphics generates a lot of ink that does not tell the viewer anything new”
@@ -58,6 +70,8 @@ The reading of chartjunk as a cost to the viewer is common in visualization rese
 - [Skau, Harrison & Kosara, An Evaluation of the Impact of Visual Embellishments in Bar Charts, Computer Graphics Forum 34 (2015, PDF)](https://kosara.net/papers/2015/Skau-EuroVis-2015.pdf): “The results of this experiment confirm that common embellishments can significantly impact the perceptual performance of bar charts, and that these impacts differ substantially based on the task”
 
 ### Case Study: GOV.UK
+
+**The reasoning lines up with cognitive load.**
 
 A mobile survey experiment (Mavletova & Couper 2014) found scrolling faster than paging, with no rise in quitting.
 

@@ -15,6 +15,8 @@ Each factual claim in the article was checked against the source it cites, then 
 
 ### Introduction
 
+**In reality, research on judgment and decision-making suggests that much of what shapes a decision happens quickly and automatically, with little deliberate thought.**
+
 Kahneman's account of fast, automatic System 1 judgment is the basis for this sentence; classic work by Nisbett and Wilson (1977) also showed that people often cannot report what influenced their choices.
 
 - [Nisbett & Wilson, Telling more than we can know, Psychological Review 84(3) (1977)](https://doi.org/10.1037/0033-295X.84.3.231): “Subjects are sometimes (a) unaware of the existence of a stimulus that importantly influenced a response, (b) unaware of the existence of the response, and (c) unaware that the stimulus has affected the response.”
@@ -22,13 +24,19 @@ Kahneman's account of fast, automatic System 1 judgment is the basis for this se
 
 ### The Science of Speed
 
+**System 1: Fast, automatic, and effortless. This is the brain on "autopilot." System 2: Slow, effortful, and deliberate. This is the brain working through a hard problem.**
+
 Kahneman describes System 1 as fast, automatic, effortless and associative, and System 2 as slow, serial and effortful (Nobel lecture, 2002).
 
 - [Kahneman, Maps of Bounded Rationality (Nobel lecture, 2002)](https://www.nobelprize.org/uploads/2018/06/kahnemann-lecture.pdf): “The operations of System 1 are fast, automatic, effortless, associative, and difficult to control or modify.”
 
+**Online, most users scan pages rather than read them word by word, and they slow down to read closely only when the content matters enough to them.**
+
 In Nielsen's usability studies, 79% of test users scanned new pages and only 16% read word by word.
 
 - [Nielsen, How Users Read on the Web, NN/g (1997)](https://www.nngroup.com/articles/how-users-read-on-the-web/): “In research on how people read websites we found that 79 percent of our test users always scanned any new page they came across; only 16 percent read word-by-word.”
+
+**If an interface makes a task feel hard, users are less willing to start it or see it through.**
 
 In Song and Schwarz's experiments, instructions printed in a hard-to-read font made the same task seem harder and people less willing to do it.
 
@@ -37,16 +45,22 @@ In Song and Schwarz's experiments, instructions printed in a hard-to-read font m
 
 ### The Science of Speed (pull quote)
 
+**Gigerenzer and Gaissmaier define heuristics as efficient cognitive processes, conscious or unconscious, that ignore part of the information.**
+
 Gigerenzer and Gaissmaier (2011) define heuristics this way in the abstract of their Annual Review of Psychology paper.
 
 - [Gigerenzer & Gaissmaier, Heuristic Decision Making, Annual Review of Psychology 62 (2011)](https://doi.org/10.1146/annurev-psych-120709-145346): “Heuristics are efficient cognitive processes, conscious or unconscious, that ignore part of the information.”
 
 ### The Anchoring Effect
 
+**One of the best-documented biases in judgment is Anchoring: a number people see early, even an irrelevant one, pulls their later estimates toward it. In studies of what people will pay, the effect is real but more moderate than early experiments suggested.**
+
 A meta-analysis of 53 studies of willingness to pay and accept found a moderate anchoring effect (Li, Maniadis and Sedikides 2021).
 
 - [Kahneman, Maps of Bounded Rationality (Nobel lecture, 2002)](https://www.nobelprize.org/uploads/2018/06/kahnemann-lecture.pdf): “Because the intuitive impression comes first, it is likely to serve as an anchor for subsequent adjustments, and corrective adjustments from anchors are normally insufficient.”
 - [Klein et al., Investigating Variation in Replicability (Many Labs 1), Social Psychology 45(3) (2014)](https://doi.org/10.1027/1864-9335/a000178): “In the aggregate, 10 effects replicated consistently.”
+
+**The prices have not changed, but the order can shift what feels reasonable. Studies of price order find that listing higher prices first nudges people toward pricier options, mainly when they read price as a sign of quality.**
 
 Suk, Lee and Lichtenstein (2012) found that presenting prices from high to low led consumers to choose higher-priced options.
 
@@ -54,20 +68,28 @@ Suk, Lee and Lichtenstein (2012) found that presenting prices from high to low l
 
 ### The Default Effect
 
+**People tend to stick with whatever option is already selected. This is known as the Default Effect. A pre-selected option usually keeps far more people than it would attract otherwise, although the size of the effect varies a lot by setting, and defaults work less well when people already have strong preferences.**
+
 A meta-analysis of default studies (Jachimowicz et al. 2019) finds that most show positive effects, and that defaults work through effort, implied endorsement and a sense of ownership.
 
 - [Jachimowicz, Duncan, Weber & Johnson, When and why defaults influence decisions, Behavioural Public Policy 3(2) (2019)](https://doi.org/10.1017/bpp.2018.43): “the majority of default studies find positive effects, but several do not find a significant effect, and two even demonstrate negative effects.”
 - [Johnson & Goldstein, Do Defaults Save Lives?, Science 302 (2003), author-hosted PDF](https://www.dangoldstein.com/papers/DefaultsScience.pdf): “Revealed donation rates were about twice as high when opting-out as when opting-in.”
 
+**The most famous example of this comes from a study by Johnson and Goldstein (2003) on organ donation. In countries with an "opt-in" policy, about 15% of people were registered as donors on average. In countries with an "opt-out" policy, consent rates were 86% or higher. The default changed who was registered far more than it changed actual donations, though: later studies find a much smaller difference in donations, and some find none.**
+
 Johnson and Goldstein's figures describe effective consent; their own estimate of the effect on actual donation was a rise from 14.1 to 16.4 donors per million (Science, 2003).
 
 - [Schulze Spuentrup, Does implementing opt-out solve the organ shortage problem?, European Journal of Health Economics 26(4) (2025)](https://pubmed.ncbi.nlm.nih.gov/39302557/): “Synthetic control estimates show that Argentina and Wales achieved substantially higher organ donation rates with the shift from an opt-in to an opt-out system than without the reform taking place.”
+
+**If most of your users choose "Express Shipping," do not make them select it every time. Make it the default. This saves most users a step, and people tend to read a default as the recommended choice.**
 
 McKenzie, Liersch and Finkelstein (2006) showed that people treat a policy default as an implicit recommendation from whoever set it.
 
 - [McKenzie, Liersch & Finkelstein, Recommendations Implicit in Policy Defaults, Psychological Science 17(5) (2006)](https://doi.org/10.1111/j.1467-9280.2006.01721.x): “people perceive the default as indicating the recommended course of action.”
 
 ### Loss Aversion
+
+**In many studies, people weigh a loss about twice as heavily as a gain of the same size. This is Loss Aversion. The size of the effect varies with the situation, and with how familiar people are with what is at stake.**
 
 A 2024 meta-analysis of loss aversion estimates puts the average coefficient at about 1.96, close to Kahneman's estimate of 2 to 2.5.
 
@@ -76,14 +98,19 @@ A 2024 meta-analysis of loss aversion estimates puts the average coefficient at 
 
 ### Case Study: The Economist
 
+**Behavioral economist Dan Ariely famously illustrated the Decoy Effect (or Asymmetric Dominance), first documented by Joel Huber and colleagues in 1982, using a subscription offer from The Economist.**
+
 Asymmetric dominance was first reported by Huber, Payne and Puto (1982); Ariely's Economist example in Predictably Irrational (2008) made it widely known.
 
 - [Wikipedia, Decoy effect](https://en.wikipedia.org/wiki/Decoy_effect): “Given these choices, 16% of the students in the experiment conducted by Ariely chose the first option, 0% chose the middle option, and 84% chose the third option.”
 
+**In Ariely's reading, the print-only option was a decoy: almost no one would want it, but it made the web-and-print bundle look like a much better deal. The Economist never explained the offer, and the ad was later withdrawn.**
+
 Ariely presents the print-only tier as a decoy that made the bundle look more attractive (Predictably Irrational, 2008; TED, 2008). He has said he asked The Economist what they were thinking and received no explanation.
 
-
 ### The Choice Factory
+
+**Richard Shotton's The Choice Factory gives each bias a short chapter, follows a shopper through an ordinary day, and shows how to use each bias, often with his own small experiments.**
 
 Harriman House describes the book as 25 short chapters, each addressing one cognitive bias.
 

@@ -15,15 +15,21 @@ Each factual claim in the article was checked against the source it cites, then 
 
 ### Introduction
 
+**Sustainable engagement, the kind that builds habit and loyalty, depends less on external pressure and more on motivation the user owns. That includes intrinsic motivation, when people find the activity itself rewarding, and values they have taken on as their own, when they find it meaningful.**
+
 Self-determination theory does not split motivation into good intrinsic and bad extrinsic. Its founders note that well-internalized extrinsic motivation also predicts positive outcomes (Ryan & Deci 2020).
 
 - [Ryan & Deci, Contemporary Educational Psychology 61 (2020), author preprint](https://selfdeterminationtheory.org/wp-content/uploads/2020/04/2020_RyanDeci_CEP_PrePrint.pdf): “Technically intrinsic motivation pertains to activities done “for their own sake,” or for their inherent interest and enjoyment (Deci & Ryan, 2000).”
+
+**When a digital experience satisfies these three needs, people are more likely to enjoy it and come back to it; studies of video game players find each need predicts continued play.**
 
 The evidence that need satisfaction predicts return use comes mainly from video game studies (Ryan, Rigby & Przybylski 2006), which are correlational; reviews note that HCI work rarely tests SDT directly (Tyack & Mekler 2020).
 
 - [Ryan, Rigby & Przybylski, The Motivational Pull of Video Games, Motivation and Emotion 30 (2006), author-hosted PDF](https://selfdeterminationtheory.org/SDT/documents/2006_RyanRigbyPrzybylski_MandE.pdf): “Results show that SDT’s theorized needs for autonomy, competence, and relatedness independently predict enjoyment and future game play.”
 
 ### Ingredient 1: Autonomy
+
+**The result can be what psychologists call psychological reactance: a defensive mix of irritation and pushback against the system. Online, it shows up as avoidance, and sometimes as users leaving altogether.**
 
 Reactance theory comes from Jack Brehm (1966). In an online experiment, forced pop-up ads produced irritation and ad avoidance (Edwards, Li & Lee 2002).
 
@@ -32,11 +38,15 @@ Reactance theory comes from Jack Brehm (1966). In an online experiment, forced p
 
 ### Ingredient 2: Competence
 
+**Vague error messages are among the quickest ways to undercut a user's sense of competence. When a user sees "Something went wrong" with no explanation, the interface tells them something failed without offering a way forward.**
+
 Evidence on error messages comes mostly from programming education, where plainer messages reduced frustration in one study (2023) and had no measurable effect in another (Denny et al. 2014).
 
 - [The Effect of Automated Error Message Feedback on Undergraduate Physics Students Learning Python, Journal for STEM Education Research (2023)](https://doi.org/10.1007/s41979-022-00084-4): “Our results show a statistically significant reduction in negative student emotions, such as frustration and anxiety”
 
 ### Feedback Loops and Progressive Disclosure
+
+**Similarly, LinkedIn uses a profile completion meter to make progress visible. Rather than presenting a daunting empty form, it breaks the profile into small, manageable tasks, and as the meter fills, the user gets a small sense of achievement.**
 
 Visible progress toward a goal can increase persistence (Nunes & Drèze 2006), but a meta-analysis of web-survey experiments found progress bars do not reliably reduce drop-off (Villar et al. 2013).
 

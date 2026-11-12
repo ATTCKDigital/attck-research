@@ -90,20 +90,26 @@ def main(n):
     for c in claims:
         j = final[c["id"]]
         if j["verdict"] in KEEP and j.get("addendum_note"):
-            by_section.setdefault(c["section"], []).append(j)
+            by_section.setdefault(c["section"], []).append((c, j))
     for sec, js in by_section.items():
-        out += [f"### {section_title(sec)}", ""]
+        items = []
         seen = set()
-        for j in js:
-            out += [no_refs(j["addendum_note"]), ""]
+        for c, j in js:
+            note = no_refs(j["addendum_note"]).strip()
+            if re.fullmatch(r"(Confirmed|Checked|Verified)[^.]{0,60}\.", note):
+                note = ""  # reviewer shorthand such as "Confirmed against the abstract." says nothing to a reader
+            srcs = []
             for e in j.get("key_for") or []:
                 k = ((e.get("url") or "").strip(), (e.get("quote") or "").strip())
                 if k in ok and e["url"] not in seen:
                     seen.add(e["url"])
-                    out.append(
-                        f"- [{source_label(e['source'])}]({e['url']}): “{e['quote']}”"
-                    )
-            out.append("")
+                    srcs.append(f"- [{source_label(e['source'])}]({e['url']}): “{e['quote']}”")
+            if note or srcs:  # a claim with neither adds nothing to the page
+                # a claim the article rewrote is shown as it now reads, so the page never repeats corrected wording
+                lead = j["suggested_edit"] if c["id"] in changed and j.get("suggested_edit") else c["claim"]
+                items += [f"**{no_refs(re.sub(r'<[^>]+>', '', lead))}**", ""] + ([note, ""] if note else []) + srcs + ([""] if srcs else [])
+        if items:
+            out += [f"### {section_title(sec)}", ""] + items
     if changed:
         out += [
             "## What changed in the article",
@@ -122,7 +128,7 @@ def main(n):
             out += [
                 f"### {section_title(cl[cid]['section'])}: {j['verdict'].lower()}",
                 "",
-                f"**Claim reviewed:** {cl[cid]['claim']}",
+                f"**Claim reviewed:** {no_refs(cl[cid]['claim'])}",
                 "",
                 f"**Now reads:** {no_refs(j['suggested_edit'])}",
                 "",

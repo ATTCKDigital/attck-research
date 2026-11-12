@@ -15,11 +15,15 @@ Each factual claim in the article was checked against the source it cites, then 
 
 ### Introduction
 
+**Nielsen Norman Group's eyetracking work has documented scanning patterns for years, including the original F-shaped pattern and later updates that show multiple scanning modes depending on layout and content.**
+
 NN/g's 2017 follow-up adds that the F-pattern is one of several common scanning patterns and that good layout can prevent it.
 
 - [Nielsen, F-Shaped Pattern for Reading Web Content, NN/g (2006)](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/): “Eyetracking visualizations show that users often read Web pages in an F-shaped pattern: two horizontal stripes followed by a vertical stripe.”
 - [Pernice, How People Read Online: New and Old Findings, NN/g (2020)](https://www.nngroup.com/articles/how-people-read-online/): “Almost all of the gaze patterns observed in 2006 were present in our 2019 study”
 - [Pernice, F-Shaped Pattern of Reading on the Web: Misunderstood, But Still Relevant, NN/g (2017)](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/): “Scanning on the web does not always take the shape of an F. There are other common scanning patterns too.”
+
+**If the interface does not provide obvious grouping, users guess at it. That is when they overlook key information, click the wrong control, or come away feeling the page is confusing, even if nothing is technically wrong.**
 
 Nielsen Norman Group reports that items separated from their group are easily overlooked by task-focused users, and a 2024 experiment showed that spatial grouping changes which comparisons viewers draw from a chart.
 
@@ -29,11 +33,15 @@ Nielsen Norman Group reports that items separated from their group are easily ov
 
 ### Core Principle Simplified
 
+**Proximity: items close together are perceived as related.**
+
 Proximity is one of the most robust grouping cues in the lab (Kubovy et al. 1998), though strong color differences or a shared container can override it.
 
 - [NN/g, Proximity Principle in Visual Design (2020)](https://www.nngroup.com/articles/gestalt-proximity/): “Design elements near each other are perceived as related, while elements spaced apart are perceived as belonging to separate groups.”
 - [Kubovy, Holcombe & Wagemans, On the lawfulness of grouping by proximity, Cognitive Psychology 35 (1998)](https://pubmed.ncbi.nlm.nih.gov/9520318/): “relative strength of grouping into strips of dots of a particular orientation approximates a decreasing exponential function of the relative distance between dots in that orientation.”
 - [Palmer & Beck, The repetition discrimination task, Perception & Psychophysics 69 (2007)](https://pubmed.ncbi.nlm.nih.gov/17515217/): “Experiments 1 and 3 validate the method by measuring grouping based on proximity, color similarity, common region, and element connectedness.”
+
+**Common region: items inside the same boundary are perceived as a group.**
 
 The lab source for common region is Palmer (1992), and later experiments find it dominates other external cues such as connecting lines.
 
@@ -41,12 +49,16 @@ The lab source for common region is Palmer (1992), and later experiments find it
 - [Palmer, Common region: a new principle of perceptual grouping, Cognitive Psychology 24 (1992)](https://pubmed.ncbi.nlm.nih.gov/1516361/): “this factor strongly influences perceived grouping and is capable of overcoming the effects of other powerful grouping factors such as proximity and similarity.”
 - [Common region wins the competition between extrinsic grouping cues, Psychonomic Bulletin & Review (2017)](https://pubmed.ncbi.nlm.nih.gov/28251594/): “grouping by common region dominated the perceived organization of the display, even though the phenomenological strength of the grouping cues was equated for each participant”
 
+**Connectedness: items joined by a line or a shared edge are perceived as a unit. This cue can outweigh proximity or similarity, though a shared container usually wins.**
+
 Experiments that match cue strength find that a shared container (common region) dominates connecting lines (2016, 2017, 2021 studies citing).
 
 - [Palmer & Rock, Rethinking Perceptual Organization, Psychonomic Bulletin & Review (1994)](https://pubmed.ncbi.nlm.nih.gov/24203413/): “We demonstrate its effects and show that they occur even when opposed by powerful grouping principles such as proximity and similarity.”
 - [Wagemans et al. (2012), summarizing Palmer & Beck (2007)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3482144/): “displays with elements that were connected to each other produced reliably faster responses than displays with unconnected elements.”
 
 ### Finding 1
+
+**If your layout implies the wrong group, users can misread relationships. Clear labels reduce the damage and sometimes override a misleading layout, but not always. When the visual structure points the wrong way, fixing copy alone is a gamble.**
 
 Grouping cues change what viewers compare and conclude in charts (2024), and spatial contiguity is among the strongest effects in multimedia learning (overview of 29 meta-analyses). But survey experiments show words usually outrank visual cues: fully labeled scales removed the visual spacing effect, though in at least one case layout still influenced answers on top of labels.
 
@@ -56,6 +68,8 @@ Grouping cues change what viewers compare and conclude in charts (2024), and spa
 - [NN/g, The Principle of Common Region (2020)](https://www.nngroup.com/articles/common-region/): “A later version (right) corrected this problem by using the card-layout style to create a common region for each recipe’s image, title, and details.”
 
 ### Finding 2
+
+**Feature Integration Theory: when objects require combining multiple features, attention often has to be allocated more deliberately rather than perceived effortlessly (Treisman and Gelade 1980).**
 
 Later research (Guided Search, Wolfe et al. 1989) found that simple features can guide attention even in conjunction searches, so search is often faster than the original theory predicted.
 
