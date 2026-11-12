@@ -1,1 +1,7 @@
 .DS_Store
+.env
+# Private working data: raw pass files, fetched sources and the private reports
+work/
+.cache/
+logs/
+__pycache__/

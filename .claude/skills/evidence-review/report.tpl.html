@@ -1,0 +1,190 @@
+<title>Evidence Review: Article __N__</title>
+<meta name="claude:viewport-fit-sides" content="cover" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Archivo:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style>
+  /* Layout: a reviewer's marked-up paper. Summary verdict ledger first, then one numbered claim per block, evidence for and against side by side */
+  :root {
+    --bg: #f3f4f6; --paper: #ffffff; --ink: #191c22; --muted: #5d6370; --line: #dde0e6;
+    --accent: #2b4c8c;
+    --ok: #2d6a3e; --ok-bg: #2d6a3e14; --cav: #8a6410; --cav-bg: #b8861824; --con: #a4421c; --con-bg: #a4421c16;
+    --no: #9b1c2e; --no-bg: #9b1c2e14; --unv: #5d6370; --unv-bg: #5d637014; --mis: #6b3fa0; --mis-bg: #6b3fa014;
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --body: "Literata", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg: #12141a; --paper: #1a1d24; --ink: #e8e9ec; --muted: #9aa0ac; --line: #2c3039; --accent: #8fb0ef;
+    --ok: #86c79a; --ok-bg: #86c79a1c; --cav: #f0c766; --cav-bg: #f0c7661c; --con: #f0a07c; --con-bg: #f0a07c1c;
+    --no: #f08a99; --no-bg: #f08a991c; --unv: #9aa0ac; --unv-bg: #9aa0ac1c; --mis: #c3a3ef; --mis-bg: #c3a3ef1c; color-scheme: dark; } }
+  :root[data-theme="dark"] {
+    --bg: #12141a; --paper: #1a1d24; --ink: #e8e9ec; --muted: #9aa0ac; --line: #2c3039; --accent: #8fb0ef;
+    --ok: #86c79a; --ok-bg: #86c79a1c; --cav: #f0c766; --cav-bg: #f0c7661c; --con: #f0a07c; --con-bg: #f0a07c1c;
+    --no: #f08a99; --no-bg: #f08a991c; --unv: #9aa0ac; --unv-bg: #9aa0ac1c; --mis: #c3a3ef; --mis-bg: #c3a3ef1c; color-scheme: dark; }
+  body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body);
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 80px; }
+  main { max-width: 880px; margin: 0 auto; display: grid; gap: 32px; }
+  a { color: var(--accent); text-underline-offset: 3px; word-break: break-word; }
+  a:focus-visible, summary:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .eyebrow { font: 600 12px var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  h1 { font: 700 clamp(28px, 4.6vw, 40px)/1.1 var(--display); margin: 6px 0 10px; text-wrap: balance; letter-spacing: -.01em; }
+  .lede { margin: 0; color: var(--muted); max-width: 66ch; }
+  .meta { font: 12px/1.6 var(--mono); color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 12px; }
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; }
+  h2 { font: 700 20px/1.25 var(--display); margin: 0 0 12px; }
+  .headline { font-size: 18px; margin: 0 0 16px; max-width: 70ch; }
+  .ledger { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; padding: 0; list-style: none; }
+  .v { display: inline-flex; align-items: center; gap: 6px; font: 600 12px var(--display); letter-spacing: .04em; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .v b { font-variant-numeric: tabular-nums; }
+  .v-Supported { color: var(--ok); background: var(--ok-bg); }
+  .v-Supported-with-caveats { color: var(--cav); background: var(--cav-bg); }
+  .v-Contested { color: var(--con); background: var(--con-bg); }
+  .v-Not-supported { color: var(--no); background: var(--no-bg); }
+  .v-Misattributed { color: var(--mis); background: var(--mis-bg); }
+  .v-Unverified { color: var(--unv); background: var(--unv-bg); }
+  .groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .groups div { min-width: 0; }
+  .groups h3 { font: 600 12px var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  .groups a { font: 500 13px var(--mono); margin-right: 8px; }
+  .claim { background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: 8px; padding: 18px 22px; display: grid; gap: 12px; scroll-margin-top: 16px; }
+  .claim[data-v="Supported"] { border-left-color: var(--ok); }
+  .claim[data-v="Supported with caveats"] { border-left-color: var(--cav); }
+  .claim[data-v="Contested"] { border-left-color: var(--con); }
+  .claim[data-v="Not supported"] { border-left-color: var(--no); }
+  .claim[data-v="Misattributed"] { border-left-color: var(--mis); }
+  .ctop { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+  .cid { font: 500 13px var(--mono); color: var(--muted); }
+  .sec { font: 500 12px var(--display); color: var(--muted); }
+  .conf { font: 12px var(--mono); color: var(--muted); }
+  .ctext { font-size: 17px; margin: 0; }
+  .why { margin: 0; }
+  .edit { border: 1px dashed var(--accent); border-radius: 6px; padding: 10px 14px; }
+  .edit p { margin: 0; }
+  .lbl { display: block; font: 600 11px var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .ev { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .ev > div { min-width: 0; }
+  .ev ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .ev li { font-size: 14px; line-height: 1.5; }
+  .ev q { display: block; font-style: italic; margin: 2px 0; }
+  .src { font: 12px var(--mono); color: var(--muted); }
+  details { font-size: 14px; }
+  summary { cursor: pointer; font: 600 13px var(--display); color: var(--muted); }
+  details .raw { display: grid; gap: 8px; margin-top: 8px; }
+  details .raw p { margin: 0; }
+  .decide { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 8px; }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opts label { display: inline-flex; align-items: center; gap: 6px; font: 600 13px var(--display); padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; }
+  .opts input { accent-color: var(--accent); margin: 0; }
+  .opts label:has(input:checked) { border-color: var(--accent); background: var(--gold-soft, transparent); color: var(--accent); }
+  .decide textarea { width: 100%; box-sizing: border-box; min-height: 64px; font: 14px/1.5 var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; }
+  .bar { position: sticky; bottom: 0; z-index: 5; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; box-shadow: 0 -4px 18px #0000001a; }
+  .bar .prog { font: 13px var(--mono); color: var(--muted); }
+  .bar button { font: 700 14px var(--display); color: var(--paper); background: var(--accent); border: 0; border-radius: 999px; padding: 10px 18px; cursor: pointer; }
+  .bar .ok { font: 12px var(--mono); color: var(--ok); }
+  .hidden-copy { position: absolute; left: -9999px; }
+  footer { font: 12px/1.6 var(--mono); color: var(--muted); }
+  .changed { font-size: 14px; margin: 0; padding: 8px 12px; border-radius: 6px; background: var(--cav-bg); }
+  .cov { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: 12px var(--mono); color: var(--muted); }
+  .chip { font: 500 11px/1.4 var(--display); padding: 3px 10px; border-radius: 12px; border: 1px solid var(--line); color: var(--ink); max-width: 100%; overflow-wrap: anywhere; }
+  main > *, #claims > *, .claim > * { min-width: 0; }
+  .chip.for { border-color: var(--ok); color: var(--ok); }
+  .chip.against { border-color: var(--con); color: var(--con); }
+  .chip.mixed { border-color: var(--cav); color: var(--cav); }
+  .vq { font: 500 11px var(--mono); margin-left: 6px; }
+  .vq.ok { color: var(--ok); }
+  .vq.bad { color: var(--no); }
+  .qlog { margin: 6px 0 0; padding-left: 18px; font: 12px/1.5 var(--mono); color: var(--muted); max-height: 260px; overflow: auto; }
+  .method { font-size: 15px; margin: 0 0 14px; max-width: 70ch; color: var(--muted); }
+  @media (max-width: 520px) { .panel, .claim { padding: 16px; } }
+</style>
+<main>
+  <header>
+    <p class="eyebrow">Evidence review · Private</p>
+    <h1 id="title"></h1>
+    <p class="lede">For each suggested edit, choose what to do, then press <b>Copy Responses</b> and paste the result back to Claude to update the article. Every factual claim in the article was checked against its own citation, then challenged by separate reviewers told to build the strongest case against it. They searched three ways: studies they already knew, later papers that cite the original work, and open searches in other fields that study the same mechanism. A third reviewer weighed everything with a fixed rubric, and a script re-fetched every source to confirm every quote. Nothing in the article has been changed.</p>
+    <div class="meta" id="meta"></div>
+  </header>
+  <section class="panel" aria-labelledby="sum-h">
+    <h2 id="sum-h">Overall</h2>
+    <p class="headline" id="headline"></p>
+    <p class="method" id="method"></p>
+    <ul class="ledger" id="ledger"></ul>
+    <div class="groups" id="groups"></div>
+  </section>
+  <section style="display: grid; gap: 16px" aria-label="Claims" id="claims"></section>
+  <div class="bar" role="region" aria-label="Your responses"><span class="prog" id="prog"></span><span><button type="button" id="copy">Copy Responses</button> <span class="ok" id="copyok" aria-live="polite"></span></span></div>
+  <footer id="foot"></footer>
+  <textarea class="hidden-copy" id="buf" aria-hidden="true" tabindex="-1"></textarea>
+</main>
+<script>
+  const R = /*DATA*/ {};
+  const KEY = "evrev-" + R.n;
+  let ch = {};
+  try { ch = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(ch)); } catch (e) {} };
+  const OPTS = [["apply", "Apply edit"], ["changes", "Apply with my changes"], ["keep", "Keep as written"], ["discuss", "Discuss"]];
+  function decideHtml(c) {
+    const cur = ch[c.id] || {};
+    return `<div class="decide"><span class="lbl">Your decision</span><div class="opts" role="radiogroup" aria-label="Decision for ${esc(c.id)}">${OPTS.map(([v, l]) => `<label><input type="radio" name="d-${esc(c.id)}" id="d-${esc(c.id)}-${v}" value="${v}" data-c="${esc(c.id)}"${cur.choice === v ? " checked" : ""}>${l}</label>`).join("")}</div>
+      <textarea id="n-${esc(c.id)}" data-note="${esc(c.id)}" placeholder="Your wording or notes (used with Apply with my changes or Discuss)"${cur.choice === "changes" || cur.choice === "discuss" ? "" : " hidden"}>${esc(cur.note || "")}</textarea></div>`;
+  }
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const cls = (v) => "v v-" + String(v).replace(/ /g, "-");
+  const link = (u, t) => (u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t || u)}</a>` : esc(t || ""));
+  document.getElementById("title").textContent = R.title;
+  document.getElementById("meta").innerHTML = [
+    link(R.url, "Read the article"), "Reviewed " + esc(R.date), esc(R.models), esc(R.claims.length) + " claims",
+  ].map((x) => `<span>${x}</span>`).join("");
+  document.getElementById("headline").textContent = R.summary.headline || "";
+  document.getElementById("method").textContent = R.summary.method_note || "";
+  const order = ["Not supported", "Contested", "Misattributed", "Supported with caveats", "Unverified", "Supported"];
+  const counts = R.summary.counts || {};
+  document.getElementById("ledger").innerHTML = order.filter((v) => counts[v]).map((v) => `<li class="${cls(v)}"><b>${counts[v]}</b>${esc(v)}</li>`).join("");
+  const grp = (h, ids) => ids && ids.length ? `<div><h3>${h}</h3>${ids.map((i) => `<a href="#${esc(i)}">${esc(i)}</a>`).join("")}</div>` : "";
+  document.getElementById("groups").innerHTML = grp("Must fix", R.summary.must_fix) + grp("Should fix", R.summary.should_fix) + grp("Fine as written", R.summary.fine);
+  const vtag = (e) => e.v === "confirmed" || e.v === "close" ? `<span class="vq ok">✓ quote confirmed</span>` : e.v ? `<span class="vq bad">✗ quote not confirmed</span>` : "";
+  const evList = (xs) => (xs && xs.length ? `<ul>${xs.map((e) => `<li>${e.quote ? `<q>${esc(e.quote)}</q>` : ""}<span class="src">${link(e.url, e.source)}</span>${vtag(e)}</li>`).join("")}</ul>` : `<p class="src">None found.</p>`);
+  const covHtml = (c) => { const cv = (c.judge || {}).coverage || {}; const r = cv.routes || {}; const f = cv.fields || [];
+    return `<div class="cov"><span>Searched: ${esc(r.recall || 0)} recalled · ${esc(r["citation-graph"] || 0)} via citing papers · ${esc(r["cross-field"] || 0)} from other fields</span>${f.map((x) => `<span class="chip ${esc(String(x.result).split(" ")[0])}">${esc(x.field)}: ${esc(x.result)}</span>`).join("")}</div>`; };
+  document.getElementById("claims").innerHTML = R.claims.map((c) => {
+    const j = c.judge || {}, p2 = c.p2 || {}, p3 = c.p3 || {};
+    return `<article class="claim" id="${esc(c.id)}" data-v="${esc(j.verdict)}">
+      <div class="ctop"><span class="cid">${esc(c.id)}</span><span class="${cls(j.verdict)}">${esc(j.verdict)}</span><span class="conf">${esc(j.confidence)} confidence</span><span class="sec">${esc(c.section)}${c.cite ? " · cites [" + esc(c.cite) + "]" : " · uncited"}</span></div>
+      <p class="ctext">${esc(c.claim)}</p>
+      <p class="why">${esc(j.why)}</p>
+      ${j.changed_from_v1 ? `<p class="changed"><b>Changed since the first run:</b> ${esc(j.changed_from_v1)}</p>` : ""}
+      ${covHtml(c)}
+      ${j.suggested_edit ? `<div class="edit"><span class="lbl">Suggested edit</span><p>${esc(j.suggested_edit)}</p>${j.suggested_citation ? `<p class="src">Cite: ${link(j.suggested_citation.url, j.suggested_citation.source)}</p>` : ""}</div>` : ""}
+      ${j.suggested_edit ? decideHtml(c) : ""}
+      <div class="ev"><div><span class="lbl">Evidence for</span>${evList(j.key_for)}</div><div><span class="lbl">Evidence against</span>${evList(j.key_against)}</div></div>
+      <details><summary>Reviewer notes</summary><div class="raw">
+        <p><b>Citation check:</b> ${esc(p2.cited_source_supports)}. ${esc(p2.overreach || "")} ${esc(p2.notes || "")}</p>
+        <p><b>Challenge strength:</b> ${esc(p3.challenge_strength)}. ${esc(p3.boundary_conditions || "")} ${esc(p3.notes || "")}</p>
+        ${j.notes ? `<p><b>Judge:</b> ${esc(j.notes)}</p>` : ""}
+        ${c.log && c.log.length ? `<p><b>Search log</b> (${c.log.length} queries)</p><ol class="qlog">${c.log.map((q) => `<li>${esc(q)}</li>`).join("")}</ol>` : ""}
+      </div></details>
+    </article>`;
+  }).join("");
+  document.getElementById("foot").textContent = R.footer || "";
+  const editable = R.claims.filter((c) => (c.judge || {}).suggested_edit);
+  function prog() { const n = editable.filter((c) => ch[c.id] && ch[c.id].choice).length; document.getElementById("prog").textContent = `${n} of ${editable.length} edits decided`; }
+  prog();
+  document.addEventListener("change", (e) => { const id = e.target.dataset.c; if (!id) return; ch[id] = Object.assign(ch[id] || {}, { choice: e.target.value }); const ta = document.getElementById("n-" + id); ta.hidden = !(e.target.value === "changes" || e.target.value === "discuss"); save(); prog(); });
+  document.addEventListener("input", (e) => { const id = e.target.dataset.note; if (!id) return; ch[id] = Object.assign(ch[id] || {}, { note: e.target.value }); save(); });
+  const LBL = { apply: "APPLY", changes: "APPLY WITH CHANGES", keep: "KEEP AS WRITTEN", discuss: "DISCUSS" };
+  function responses() {
+    const lines = [`Evidence review responses: Article ${R.n}, "${R.title}" (post ${R.post})`, ""];
+    const und = [];
+    editable.forEach((c) => { const d = ch[c.id]; const v = (c.judge || {}).verdict; if (!d || !d.choice) { und.push(c.id); return; }
+      lines.push(`${c.id} [${v}]: ${LBL[d.choice]}${d.note && (d.choice === "changes" || d.choice === "discuss") ? " :: " + d.note.trim().replace(/\s+/g, " ") : ""}`); });
+    if (und.length) lines.push("", "Undecided: " + und.join(", "));
+    return lines.join("\n");
+  }
+  document.getElementById("copy").addEventListener("click", () => {
+    const t = responses(), ok = document.getElementById("copyok");
+    const done = () => { ok.textContent = "Copied"; setTimeout(() => (ok.textContent = ""), 1800); };
+    const fb = () => { const b = document.getElementById("buf"); b.value = t; b.select(); try { document.execCommand("copy"); done(); } catch (e) { ok.textContent = "Select and copy manually"; } };
+    try { navigator.clipboard.writeText(t).then(done, fb); } catch (e) { fb(); }
+  });
+</script>
